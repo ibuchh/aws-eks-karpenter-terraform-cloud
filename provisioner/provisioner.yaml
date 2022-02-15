@@ -1,0 +1,89 @@
+apiVersion: karpenter.sh/v1alpha5
+kind: Provisioner
+metadata:
+  name: default
+spec:
+  requirements:
+    - key: karpenter.sh/capacity-type
+      operator: In
+      values: ["spot", "on-demand"]
+    - key: "kubernetes.io/arch" 
+      operator: In
+      values: ["arm64", "amd64"]
+  limits:
+    resources:
+      cpu: 1000
+  provider:
+    subnetSelector:
+      karpenter.sh/discovery: eks-karpenter
+    securityGroupSelector:
+      karpenter.sh/discovery: eks-karpenter
+  ttlSecondsAfterEmpty: 30
+
+
+
+
+# apiVersion: karpenter.sh/v1alpha5
+# kind: Provisioner
+# metadata:
+#   name: default
+# spec:
+#   requirements:
+#     - key: "kubernetes.io/arch" #If not included, all architectures are considered
+#       operator: In
+#       values: ["arm64", "amd64"]
+#     - key: " karpenter.sh/capacity-type" #If not included, the webhook for the AWS cloud provider will default to on-demand
+#       operator: In
+#       values: ["spot", "on-demand"]
+#   limits:
+#     resources:
+#       cpu: 1000
+#   provider:
+#     subnetSelector:
+#       karpenter.sh/discovery: eks-karpenter
+#     securityGroupSelector:
+#       karpenter.sh/discovery: eks-karpenter
+#   ttlSecondsAfterEmpty: 30
+
+# apiVersion: karpenter.sh/v1alpha5
+# kind: Provisioner
+# metadata:
+#   name: default
+# spec:
+#   requirements:
+#     - key: karpenter.sh/capacity-type
+#       operator: In
+#       values: ["spot"]
+#   limits:
+#     resources:
+#       cpu: 1000
+#   provider:
+#     subnetSelector:
+#       karpenter.sh/discovery: ${CLUSTER_NAME}
+#     securityGroupSelector:
+#       karpenter.sh/discovery: ${CLUSTER_NAME}
+#   ttlSecondsAfterEmpty: 30
+
+# apiVersion: karpenter.sh/v1alpha5
+# kind: Provisioner
+# metadata:
+# name: default
+# spec:
+# #Requirements that constrain the parameters of provisioned nodes. 
+# #Operators { In, NotIn } are supported to enable including or excluding values
+#   requirements:
+#     - key: "node.kubernetes.io/instance-type" #If not included, all instance types are considered
+#       operator: In
+#       values: ["m5.large", "m5.2xlarge"]
+#     - key: "topology.kubernetes.io/zone" #If not included, all zones are considered
+#       operator: In
+#       values: ["us-east-1a", "us-east-1b"]
+#     - key: "kubernetes.io/arch" #If not included, all architectures are considered
+#  operator: In
+#       values: ["arm64", "amd64"]
+#     - key: " karpenter.sh/capacity-type" #If not included, the webhook for the AWS cloud provider will default to on-demand
+#       operator: In
+#       values: ["spot", "on-demand"]
+#   provider:
+#     instanceProfile: KarpenterNodeInstanceProfile-eks-karpenter-demo
+#   ttlSecondsAfterEmpty: 30 
