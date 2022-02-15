@@ -5,6 +5,9 @@
 **/.tfstate/*
 *.tfstate.*
 
-terraform/.terraform.lock.hcl
-terraform/.DS_Stores
-terraform/*.tfstate
+**/.DS_Stores
+
+**/terraform.tfstate.*
+**/terraform.tfstate
+**/.terraform.tfstate.lock.info
+**/.terraform.lock.hcl
