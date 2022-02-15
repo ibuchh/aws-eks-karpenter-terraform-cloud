@@ -1,5 +1,5 @@
 
-# Build APIs Using container image support for AWS Lambda with Terraform Cloud
+# Configure Cluster AutoScaling using Karpenter on Amazon EKS with Hashicorp Terraform
 [![Build Status](https://travis-ci.org/joemccann/dillinger.svg?branch=master)](https://travis-ci.org/joemccann/dillinger)
 
 ## Architecture
