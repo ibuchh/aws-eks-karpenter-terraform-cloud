@@ -91,7 +91,7 @@ Clone the source code repository:
 
 ```bash
 cd ~/environment
-git clone https://github.com/aws-samples/aws-eks-karpenter-terraform-cloud.git
+git clone https://github.com/ibuchh/aws-eks-karpenter-terraform-cloud.git
 ```
 
 ## Build the infrastructure and Amazon EKS with Karpenter
